@@ -44,7 +44,7 @@ class NTLogger:
 
     def format_msg(self, string_format: str):
         """Format incoming logging messages with a given format"""
-        def func(msg: str, **_):
+        def func(msg: str, *_, **__):
             """Function to replace incoming stream"""
             print(string_format % (self.context, msg), flush=True)
         return func
