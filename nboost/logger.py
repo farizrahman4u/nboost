@@ -41,6 +41,7 @@ class NTLogger:
         self.debug = self.format_msg('D:%s:%s')
         self.error = self.format_msg('E:%s:%s')
         self.warning = self.format_msg('W:%s:%s')
+        self.critical = self.format_msg('C:%s:%s')
 
     def format_msg(self, string_format: str):
         """Format incoming logging messages with a given format"""

@@ -22,7 +22,7 @@ def resolve_model(data_dir: Path, model_dir: str, model_cls: str, **kwargs):
     model_dir = data_dir.joinpath(model_dir).absolute()
 
     if model_dir.exists():
-        logger.info('Using model cache from %s', model_dir)
+        logger.info('Using model cache from %s'% (model_dir,))
 
         if model_dir.name in CLASS_MAP:
             model_cls = CLASS_MAP[model_dir.name]
@@ -41,13 +41,13 @@ def resolve_model(data_dir: Path, model_dir: str, model_cls: str, **kwargs):
                 binary_path = data_dir.joinpath(Path(url).name)
 
                 if binary_path.exists():
-                    logger.info('Found model cache in %s', binary_path)
+                    logger.info('Found model cache in %s'%(binary_path,))
                 else:
-                    logger.info('Downloading "%s" model.', model_dir)
+                    logger.info('Downloading "%s" model.'%(model_dir,))
                     download_file(url, binary_path)
 
                 if binary_path.suffixes == ['.tar', '.gz']:
-                    logger.info('Extracting "%s" from %s', model_dir, binary_path)
+                    logger.info('Extracting "%s" from %s'%(model_dir, binary_path))
                     extract_tar_gz(binary_path, data_dir)
             else: # pass along to plugin maybe it can resolve it
                 model_dir = model_dir.name
